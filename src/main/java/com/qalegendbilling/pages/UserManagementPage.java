@@ -1,0 +1,53 @@
+package com.qalegendbilling.pages;
+
+import com.qalegendbilling.utilities.TestHelperUtility;
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
+import org.openqa.selenium.support.FindBy;
+import org.openqa.selenium.support.PageFactory;
+
+public class UserManagementPage extends TestHelperUtility {
+    public WebDriver driver;
+    /** Page Constructor **/
+    public UserManagementPage(WebDriver driver){
+        this.driver=driver;
+        PageFactory.initElements(driver,this);
+    }
+    /** Page Elements **/
+
+    private final String _userManagementMenu="//span[text()='User Management']";
+//    li[@class='treeview active']//span[@class='title']
+    @FindBy(xpath = _userManagementMenu )private WebElement userManagementMenu;
+
+    private final String _usersMenu="//li[@class='active active-sub']//span[@class='title']";
+    @FindBy(xpath = _usersMenu )private WebElement usersMenu;
+
+    private final String _rolesMenu="//i[@class='fa fa-briefcase']//following-sibling::span";
+    @FindBy(xpath = _rolesMenu )private WebElement rolesMenu;
+
+    private final String _salesCommissionMenu="//i[@class='fa fa-handshake-o']//following-sibling::span";
+    @FindBy(xpath = _salesCommissionMenu )private WebElement salesCommissionMenu;
+
+
+    public void clickOnTheUserManagementMenu(){
+        page.clickOnElement(userManagementMenu);
+    }
+    public boolean userMenuIsDisplayed(){
+       Boolean status= page.isDisplayed(usersMenu);
+       return status;
+    }
+
+    public boolean roleMenuIsDisplayed(){
+        Boolean status= page.isDisplayed(rolesMenu);
+        return status;
+    }
+
+    public boolean salesCommissionMenuIsDisplayed(){
+        Boolean status= page.isDisplayed(salesCommissionMenu);
+        return status;
+    }
+
+    public void clickOnUsersMenu(){
+        page.clickOnElement(usersMenu);
+    }
+}
