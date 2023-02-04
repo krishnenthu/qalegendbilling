@@ -1,6 +1,7 @@
 package com.qalegendbilling.testscript;
 
 import com.aventstack.extentreports.ExtentTest;
+import com.aventstack.extentreports.Status;
 import com.qalegendbilling.automationcore.Base;
 import com.qalegendbilling.constants.ErrorMessage;
 import com.qalegendbilling.listeners.TestListener;
@@ -20,8 +21,9 @@ public class SignoutTest extends Base {
     SignoutPage signOut;
     ThreadLocal<ExtentTest> extentTest = TestListener.getTestInstance();
 
-    @Test
+    @Test(priority = 1,description = "TC001_verifyUserSignOut",groups = {"Smoke"})
     public void TC001_verifyUserSignOut() {
+        extentTest.get().assignCategory("Smoke");
         List<ArrayList<String>> data = ExcelUtility.excelDataReader("LoginPageTitle");
         String expLoginPageTitle=data.get(0).get(1);
         login=new LoginPage(driver);
@@ -33,6 +35,7 @@ public class SignoutTest extends Base {
         signOut.clickOnSignOutButton();
         String actPageTitle= login.getLoginPageTitle();
         Assert.assertEquals(actPageTitle,expLoginPageTitle, ErrorMessage.SIGNOUT_FAILED_MESSAGE);
+        extentTest.get().log(Status.PASS,"SignedOut from home page");
 
     }
 }

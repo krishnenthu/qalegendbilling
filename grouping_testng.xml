@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
+<suite name="All Test Suite">
+    <listeners>
+        <listener class-name="com.qalegendbilling.listeners.TestListener"/>
+    </listeners>
+    <test name="Groping">
+        <groups>
+            <run>
+                <include name="Regression"/>
+                <exclude name="Sanity"/>
+                <include name="Smoke"/>
+            </run>
+        </groups>
+        <classes>
+            <class name="com.qalegendbilling.testscript.HomeTest">
+                <methods>
+                    <include name="TC001_verifyHomePageTitle"/>
+                    <include name="TC002_verifyDateDisplayed"/>
+                </methods>
+            </class>
+            <class name="com.qalegendbilling.testscript.LoginTest">
+                <methods>
+                    <include name="TC001_verifyLoginPageTitle"/>
+                    <include name="TC002_verifyUserLoginWithValidUserCredentials"/>
+                    <include name="TC003_verifyUserLoginWithInvalidUserCredentials"/>
+                    <include name="TC004_verifyUserAbleToClickOnRememberMeCheckBox"/>
+                </methods>
+            </class>
+            <class name="com.qalegendbilling.testscript.ResetTest">
+                <methods>
+                    <include name="TC001_verifyResetPasswordWithInvalidEmailId"/>
+                </methods>
+            </class>
+            <class name="com.qalegendbilling.testscript.SignoutTest">
+                <methods>
+                    <include name="TC001_verifyUserSignOut"/>
+                </methods>
+            </class>
+            <class name="com.qalegendbilling.testscript.UserManagementTest">
+                <methods>
+                    <include name="TC001_verifyTheUserManagementSubTabsAreDisplayed"/>
+                </methods>
+            </class>
+            <class name="com.qalegendbilling.testscript.UsersTest">
+                <methods>
+                    <include name="TC001_verifyUsersPageTitle"/>
+                </methods>
+            </class>
+        </classes>
+    </test>
+</suite>

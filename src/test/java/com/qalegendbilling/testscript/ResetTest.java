@@ -1,6 +1,7 @@
 package com.qalegendbilling.testscript;
 
 import com.aventstack.extentreports.ExtentTest;
+import com.aventstack.extentreports.Status;
 import com.qalegendbilling.automationcore.Base;
 import com.qalegendbilling.constants.ErrorMessage;
 import com.qalegendbilling.listeners.TestListener;
@@ -19,8 +20,9 @@ public class ResetTest extends Base {
     ResetPage reset;
 
     ThreadLocal<ExtentTest> extentTest = TestListener.getTestInstance();
-    @Test
+    @Test(priority = 1,description = "TC001_verifyResetPasswordWithInvalidEmailId",groups = {"Smoke"})
     public void TC001_verifyResetPasswordWithInvalidEmailId() {
+        extentTest.get().assignCategory("Smoke");
         List<ArrayList<String>> data = ExcelUtility.excelDataReader("ResetPassword");
         String expectedMessage=data.get(0).get(1);
         login=new LoginPage(driver);
@@ -30,6 +32,7 @@ public class ResetTest extends Base {
         reset.clickOnPasswordResetButton();
         String actualMessage= reset.getMessageDisplayedOnInvalidEmailId();
         Assert.assertEquals(actualMessage,expectedMessage, ErrorMessage.PASSWORD_RESET_FAILED_MESSAGE);
+        extentTest.get().log(Status.PASS,"Expected email match with email");
 
     }
 }

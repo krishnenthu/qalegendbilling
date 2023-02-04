@@ -1,6 +1,7 @@
 package com.qalegendbilling.testscript;
 
 import com.aventstack.extentreports.ExtentTest;
+import com.aventstack.extentreports.Status;
 import com.qalegendbilling.automationcore.Base;
 import com.qalegendbilling.constants.ErrorMessage;
 import com.qalegendbilling.listeners.TestListener;
@@ -16,8 +17,9 @@ public class UserManagementTest extends Base {
     UserManagementPage userManagement;
     ThreadLocal<ExtentTest> extentTest = TestListener.getTestInstance();
 
-    @Test
+    @Test(priority = 1,description = "TC001_verifyTheUserManagementSubTabsAreDisplayed",groups = {"Sanity"})
     public void TC001_verifyTheUserManagementSubTabsAreDisplayed() {
+        extentTest.get().assignCategory("Sanity");
         login=new LoginPage(driver);
         login.enterUsername();
         login.enterPassword();
@@ -27,9 +29,12 @@ public class UserManagementTest extends Base {
         userManagement.clickOnTheUserManagementMenu();
         Boolean userMenuStatus=userManagement.userMenuIsDisplayed();
         Assert.assertTrue(userMenuStatus, ErrorMessage.USER_SUB_MENU_NOT_FOUND_MESSAGE);
+        extentTest.get().log(Status.PASS,"user menu displayed");
         Boolean rolesMenuStatus=userManagement.roleMenuIsDisplayed();
         Assert.assertTrue(rolesMenuStatus, ErrorMessage.ROLE_SUB_MENU_NOT_FOUND_MESSAGE);
+        extentTest.get().log(Status.PASS,"roles menu displayed");
         Boolean salesMenuStatus=userManagement.salesCommissionMenuIsDisplayed();
         Assert.assertTrue(salesMenuStatus, ErrorMessage.SALES_SUB_MENU_NOT_FOUND_MESSAGE);
+        extentTest.get().log(Status.PASS,"sales commission menu displayed");
     }
 }

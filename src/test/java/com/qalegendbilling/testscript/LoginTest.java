@@ -22,18 +22,20 @@ public class LoginTest extends Base {
     DataProvider dataProvider;
     ThreadLocal<ExtentTest> extentTest = TestListener.getTestInstance();
 
-    @Test
+    @Test(priority = 1,description = "TC001_verifyLoginPageTitle",groups = {"Regression"})
     public void TC001_verifyLoginPageTitle() {
+        extentTest.get().assignCategory("Regression");
         List<ArrayList<String>> data = ExcelUtility.excelDataReader("LoginPageTitle");
         String expLoginPageTitle=data.get(0).get(1);
         login=new LoginPage(driver);
         String actLoginPageTitle=login.getLoginPageTitle();
-       // extentTest.get().log(Status.PASS,"Login page title received");
+        extentTest.get().log(Status.PASS,"Login page title received");
         Assert.assertEquals(actLoginPageTitle,expLoginPageTitle, ErrorMessage.TITLE_FAILURE_MESSAGE);
-      //  extentTest.get().log(Status.PASS,"Expected login page title match with actual login page title");
+        extentTest.get().log(Status.PASS,"Expected login page title match with actual login page title");
     }
-    @Test
+    @Test(priority = 1,description = "TC002_verifyUserLoginWithValidUserCredentials",groups = {"Smoke"})
     public void TC002_verifyUserLoginWithValidUserCredentials() {
+        extentTest.get().assignCategory("Smoke");
         login=new LoginPage(driver);
         login.enterUsername();
         login.enterPassword();
@@ -44,9 +46,11 @@ public class LoginTest extends Base {
         home=new HomePage(driver);
         String actHomePageTitle= home.getHomePageTitle();
         Assert.assertEquals(actHomePageTitle,expHomePageTitle, ErrorMessage.LOGIN_FAILURE_MESSAGE);
+        extentTest.get().log(Status.PASS,"Logged In successfully");
     }
-    @Test(dataProvider = "InvalidCredentials", dataProviderClass = DataProviders.class)
+    @Test(priority = 1,description = "TC003_verifyUserLoginWithInvalidUserCredentials",dataProvider = "InvalidCredentials", dataProviderClass = DataProviders.class, groups = {"Sanity"})
     public void TC003_verifyUserLoginWithInvalidUserCredentials(String userName, String password) {
+        extentTest.get().assignCategory("Sanity");
             List<ArrayList<String>> data = ExcelUtility.excelDataReader("LogInInvalid");
              String expErrorMessage=data.get(0).get(1);
             login=new LoginPage(driver);
@@ -54,12 +58,17 @@ public class LoginTest extends Base {
             login.enterInvalidPassword(password);
             login.clickOnLoginButton();
             String actErrorMessage= login.getInvalidLoginMessage();
+            extentTest.get().log(Status.PASS,"Invalid Login message received");
             Assert.assertEquals(expErrorMessage,actErrorMessage,ErrorMessage.INVALID_ERROR_MESSAGE);
+            extentTest.get().log(Status.PASS,"Expected login error message match with actual login error message");
     }
-    @Test
+    @Test(priority = 1,description = "TC004_verifyUserAbleToClickOnRememberMeCheckBox",groups = {"Regression"})
     public void TC004_verifyUserAbleToClickOnRememberMeCheckBox() {
+        extentTest.get().assignCategory("Regression");
         login=new LoginPage(driver);
        Boolean status= login.checkRememberMeCheckBoxStatus();
+        extentTest.get().log(Status.PASS,"Received the status of remember me checkbox");
        Assert.assertFalse(status,ErrorMessage.REMEMBER_ME_CHECKBOX_SELECTED_BY_DEFAULT_MESSAGE);
+        extentTest.get().log(Status.PASS,"Able to click on remember me checkbox");
     }
 }

@@ -1,6 +1,7 @@
 package com.qalegendbilling.testscript;
 
 import com.aventstack.extentreports.ExtentTest;
+import com.aventstack.extentreports.Status;
 import com.qalegendbilling.automationcore.Base;
 import com.qalegendbilling.constants.ErrorMessage;
 import com.qalegendbilling.listeners.TestListener;
@@ -20,8 +21,9 @@ public class HomeTest extends Base {
     HomePage home;
     LoginPage login;
     ThreadLocal<ExtentTest> extentTest = TestListener.getTestInstance();
-    @Test
+    @Test(priority = 1,description = "TC001_verifyHomePageTitle",groups = {"Sanity"})
     public void TC001_verifyHomePageTitle() {
+        extentTest.get().assignCategory("Sanity");
         login=new LoginPage(driver);
         login.enterUsername();
         login.enterPassword();
@@ -31,12 +33,13 @@ public class HomeTest extends Base {
         String expHomePageTitle=data.get(0).get(1);
         home=new HomePage(driver);
         String actHomePageTitle=home.getHomePageTitle();
-        // extentTest.get().log(Status.PASS,"Home page title received");
+        extentTest.get().log(Status.PASS,"Home page title received");
         Assert.assertEquals(actHomePageTitle,expHomePageTitle, ErrorMessage.TITLE_FAILURE_MESSAGE);
-        //  extentTest.get().log(Status.PASS,"Expected Home page title match with actual Home page title");
+        extentTest.get().log(Status.PASS,"Expected Home page title match with actual Home page title");
     }
-    @Test
+    @Test(priority = 1,description = "TC002_verifyDateDisplayed",groups = {"Regression"})
     public void TC002_verifyDateDisplayed() {
+        extentTest.get().assignCategory("Regression");
         login=new LoginPage(driver);
         login.enterUsername();
         login.enterPassword();
@@ -44,10 +47,11 @@ public class HomeTest extends Base {
         login.clickOnLoginButton();
         home=new HomePage(driver);
         String actualDate= home.getDate();
+        extentTest.get().log(Status.PASS,"Actual date received");
        DateFormat dateFormat=new SimpleDateFormat("dd-MM-yyyy");
         Date currentDateWithTime = new Date();
         String expectedDate= dateFormat.format(currentDateWithTime);
-        System.out.println(expectedDate);
         Assert.assertEquals(actualDate,expectedDate, ErrorMessage.DATE_DISPLAYED_FAILED_MESSAGE);
+        extentTest.get().log(Status.PASS,"Actual date match with the expected date");
     }
 }
