@@ -15,7 +15,6 @@ public class LoginPage extends TestHelperUtility {
         PageFactory.initElements(driver,this);
     }
     /** Page Elements **/
-
     private final String _usernameField="//input[@id='username']";
     @FindBy(xpath = _usernameField) private WebElement usernameField;
     private final String _passwordField="//input[@id='password']";
@@ -32,47 +31,36 @@ public class LoginPage extends TestHelperUtility {
     private final String _invalidLoginMessage="//span[@class='help-block']//following-sibling::strong";
     @FindBy(xpath = _invalidLoginMessage) private WebElement invalidLoginMessage;
 
-
-
-
     /** User Action Methods **/
     public String getLoginPageTitle(){
         String title=page.getPageTitle(driver);
         return  title;
     }
-    public void enterUsername(){
-        String username= Constants.adminUsername;
-        page.enterText(usernameField,username);
+    public void enterUsername(String userName){
+        page.enterText(usernameField,userName);
     }
-    public void enterPassword(){
-        String password= Constants.adminPassword;
+    public void enterPassword(String password){
         page.enterText(passwordField,password);
     }
     public void selectRememberMeCheckBox(){
         page.clickOnElement(rememberMeCheckBox);
     }
-    public void clickOnLoginButton(){
+    public HomePage clickOnLoginButton(){
         page.clickOnElement(loginButton);
+        return new HomePage(driver);
     }
 
-    public  void clickOnForgotPasswordLink(){
+    public  ResetPage clickOnForgotPasswordLink(){
         page.clickOnElement(forgotPasswordLink);
+        return new ResetPage(driver);
     }
     public Boolean checkRememberMeCheckBoxStatus(){
        Boolean status= page.isSelected(rememberMeCheckBox);
        return status;
     }
 
-    public  void enterInvalidUsername(String username){
-        page.enterText(usernameField,username);
-    }
-    public void enterInvalidPassword(String password){
-        page.enterText(passwordField,password);
-
-    }
     public String getInvalidLoginMessage(){
         String message=page.getElementText(invalidLoginMessage);
         return message;
     }
-
-    }
+}

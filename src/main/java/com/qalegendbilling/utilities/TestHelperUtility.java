@@ -6,4 +6,6 @@ public class TestHelperUtility {
     public FileUploadUtility upload=new FileUploadUtility();
     public WaitUtility wait=new WaitUtility();
     public RandomDataUtility randomData=new RandomDataUtility();
+
+    public DateUtility date=new DateUtility();
 }

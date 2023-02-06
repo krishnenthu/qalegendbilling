@@ -14,18 +14,12 @@ public class SignoutPage extends TestHelperUtility {
         PageFactory.initElements(driver,this);
     }
 
-    private final String _loggedInUserName="//a[@class='dropdown-toggle']//span";
-    @FindBy(xpath = _loggedInUserName) private WebElement loggedInUserName;
-
     private final String _signOutButton="//div[@class='pull-right']//a[@class='btn btn-default btn-flat']";
     @FindBy(xpath = _signOutButton) private WebElement signOutButton;
 
 
-    public void clickOnSignOutButton(){
-        page.clickOnElement(loggedInUserName);
-        wait.setHardWait();
+    public LoginPage clickOnSignOutButton(){
         page.clickOnElement(signOutButton);
+        return new LoginPage(driver);
     }
-
-
 }

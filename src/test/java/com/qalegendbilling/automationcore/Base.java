@@ -12,6 +12,7 @@ import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.BeforeSuite;
 import org.testng.annotations.Parameters;
+
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
@@ -22,10 +23,11 @@ public class Base {
     public WebDriver driver;
     public Properties prop;
     public FileInputStream fs;
-    public Base()  {
-        prop=new Properties();
+
+    public Base() {
+        prop = new Properties();
         try {
-            fs =new FileInputStream(System.getProperty("user.dir")+ Constants.CONFIG_FILE);
+            fs = new FileInputStream(System.getProperty("user.dir") + Constants.CONFIG_FILE);
         } catch (FileNotFoundException e) {
             e.printStackTrace();
         }
@@ -35,13 +37,17 @@ public class Base {
             e.printStackTrace();
         }
     }
+
     @BeforeMethod(alwaysRun = true)
-    public void setUP(){
-        String url=prop.getProperty("url");
-        String browser=prop.getProperty("browser");
-        driver = DriverFactory.testInitializa(browser);
+    @Parameters({"browser"})
+    public void setUP(String browserName) {
+        String url = prop.getProperty("url");
+//        String browser = prop.getProperty("browser");
+//        driver = DriverFactory.testInitializa(browser)
+        driver = DriverFactory.testInitializa(browserName);
         driver.get(url);
     }
+
     @AfterMethod(alwaysRun = true)
     public void tearDown(ITestResult result) throws IOException {
         if (result.getStatus() == ITestResult.FAILURE) {
@@ -51,8 +57,9 @@ public class Base {
         }
         driver.close();
     }
+
     @BeforeSuite
-    public void setExtent(final ITestContext testContext){
+    public void setExtent(final ITestContext testContext) {
         ExtentManager.createInstance().createTest(testContext.getName(), "TEST FAILED");
     }
 }

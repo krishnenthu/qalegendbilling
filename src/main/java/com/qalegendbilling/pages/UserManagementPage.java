@@ -15,11 +15,9 @@ public class UserManagementPage extends TestHelperUtility {
     }
     /** Page Elements **/
 
-    private final String _userManagementMenu="//span[text()='User Management']";
-//    li[@class='treeview active']//span[@class='title']
-    @FindBy(xpath = _userManagementMenu )private WebElement userManagementMenu;
 
-    private final String _usersMenu="//li[@class='active active-sub']//span[@class='title']";
+
+    private final String _usersMenu="//i[@class='fa fa-user']//following-sibling::span";
     @FindBy(xpath = _usersMenu )private WebElement usersMenu;
 
     private final String _rolesMenu="//i[@class='fa fa-briefcase']//following-sibling::span";
@@ -29,9 +27,7 @@ public class UserManagementPage extends TestHelperUtility {
     @FindBy(xpath = _salesCommissionMenu )private WebElement salesCommissionMenu;
 
 
-    public void clickOnTheUserManagementMenu(){
-        page.clickOnElement(userManagementMenu);
-    }
+
     public boolean userMenuIsDisplayed(){
        Boolean status= page.isDisplayed(usersMenu);
        return status;
@@ -47,7 +43,9 @@ public class UserManagementPage extends TestHelperUtility {
         return status;
     }
 
-    public void clickOnUsersMenu(){
+    public UsersPage clickOnUsersMenu(){
         page.clickOnElement(usersMenu);
+        return new UsersPage(driver);
+
     }
 }

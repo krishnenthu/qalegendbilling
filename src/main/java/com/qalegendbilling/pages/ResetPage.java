@@ -21,13 +21,13 @@ public class ResetPage extends TestHelperUtility {
     private final String _emailField="//input[@id='email']";
     @FindBy(xpath = _emailField) private WebElement emailField;
 
-    private final String _passwordResetButton="//input[@id='email']";
+    private final String _passwordResetButton="//button[@class='btn btn-primary']";
     @FindBy(xpath = _passwordResetButton) private WebElement passwordResetButton;
 
     private final String _messageOnInvalidEmailId="//span[@class='help-block']//following::strong";
     @FindBy(xpath = _messageOnInvalidEmailId) private WebElement messageOnInvalidEmailId;
 
-    public void enterEmail(){
+    public void enterRandomEmail(){
         String randomEmail= RandomDataUtility.getRandomEmail();
         page.enterText(emailField,randomEmail);
     }

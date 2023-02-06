@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
+<suite name="Parallel testing of Methods">
+    <listeners>
+        <listener class-name="com.qalegendbilling.listeners.TestListener"/>
+    </listeners>
+    <test name="Parallel Test- Methods"  parallel="methods" thread-count="2">
+        <parameter name="browser" value="chrome"/>
+        <classes>
+            <class name="com.qalegendbilling.testscript.HomeTest">
+                <methods>
+                    <include name="TC001_verifyHomePageTitle"/>
+                    <include name="TC002_verifyDateDisplayed"/>
+                </methods>
+            </class>
+            <class name="com.qalegendbilling.testscript.LoginTest">
+                <methods>
+                    <exclude name="TC001_verifyLoginPageTitle"/>
+                    <exclude name="TC002_verifyUserLoginWithValidUserCredentials"/>
+                    <exclude name="TC003_verifyUserLoginWithInvalidUserCredentials"/>
+                    <exclude name="TC004_verifyUserAbleToClickOnRememberMeCheckBox"/>
+                </methods>
+            </class>
+            <class name="com.qalegendbilling.testscript.ResetTest">
+                <methods>
+                    <exclude name="TC001_verifyResetPasswordWithInvalidEmailId"/>
+                </methods>
+            </class>
+            <class name="com.qalegendbilling.testscript.SignoutTest">
+                <methods>
+                    <include name="TC001_verifyUserSignOut"/>
+                </methods>
+            </class>
+            <class name="com.qalegendbilling.testscript.UserManagementTest">
+                <methods>
+                    <exclude name="TC001_verifyTheUserManagementSubTabsAreDisplayed"/>
+                </methods>
+            </class>
+            <class name="com.qalegendbilling.testscript.UsersTest">
+                <methods>
+                    <exclude name="TC001_verifyUsersPageTitle"/>
+                </methods>
+            </class>
+        </classes>
+    </test>
+</suite>
