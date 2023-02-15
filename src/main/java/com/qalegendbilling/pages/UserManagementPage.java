@@ -46,6 +46,5 @@ public class UserManagementPage extends TestHelperUtility {
     public UsersPage clickOnUsersMenu(){
         page.clickOnElement(usersMenu);
         return new UsersPage(driver);
-
     }
 }

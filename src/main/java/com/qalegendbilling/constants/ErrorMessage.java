@@ -11,5 +11,14 @@ public class ErrorMessage {
     public  static final String USER_SUB_MENU_NOT_FOUND_MESSAGE="ERROR : Users Menu Not Found";
     public  static final String ROLE_SUB_MENU_NOT_FOUND_MESSAGE="ERROR : Role Menu Not Found";
     public  static final String SALES_SUB_MENU_NOT_FOUND_MESSAGE="ERROR : Sales Commission Menu Not Found";
+
+    public static final String USER_ADD_FAILURE_MESSAGE="ERROR : Failed to add user";
+
+    public static final String USER_VALID_DATA_SEARCH_FAILURE_MESSAGE="ERROR : Search with valid data failed";
+    public static final String USER_INVALID_DATA_SEARCH_FAILURE_MESSAGE="ERROR : Search with Invalid data failed";
+
+    public static final String ADD_USER_EMPTY_EMAIL_FIELD_VALIDATION_FAILURE_MESSAGE="ERROR : Email field validation failed";
+
     public static final String INVALID_ERROR_MESSAGE="ERROR: Invalid Error Message";
+
 }

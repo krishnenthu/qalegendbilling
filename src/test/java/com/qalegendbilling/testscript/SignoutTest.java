@@ -37,6 +37,6 @@ public class SignoutTest extends Base {
         login= signOut.clickOnSignOutButton();
         String actPageTitle= login.getLoginPageTitle();
         Assert.assertEquals(actPageTitle,expLoginPageTitle, ErrorMessage.SIGN_OUT_FAILED_MESSAGE);
-        extentTest.get().log(Status.PASS, ExtentLogMessage.SIGN_OUT_SUCCESS_MESSAGE);
+        extentTest.get().log(Status.PASS, ExtentLogMessage.SIGN_OUT_SUCCESS_FROM_HOME_PAGE_MESSAGE);
     }
 }

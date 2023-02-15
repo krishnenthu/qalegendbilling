@@ -7,40 +7,56 @@
     <test name="Functional Test">
         <parameter name="browser" value="chrome"/>
         <classes>
-            <class name="com.qalegendbilling.testscript.HomeTest">
+<!--            <class name="com.qalegendbilling.testscript.HomeTest">-->
+<!--                <methods>-->
+<!--                    <include name="TC001_verifyHomePageTitle"/>-->
+<!--                    <include name="TC002_verifyDateDisplayed"/>-->
+<!--                </methods>-->
+<!--            </class>-->
+<!--            <class name="com.qalegendbilling.testscript.LoginTest">-->
+<!--                <methods>-->
+<!--                    <include name="TC001_verifyLoginPageTitle"/>-->
+<!--                    <include name="TC002_verifyUserLoginWithValidUserCredentials"/>-->
+<!--                    <include name="TC003_verifyUserLoginWithInvalidUserCredentials"/>-->
+<!--                    <include name="TC004_verifyUserAbleToClickOnRememberMeCheckBox"/>-->
+<!--                </methods>-->
+<!--            </class>-->
+<!--            <class name="com.qalegendbilling.testscript.ResetTest">-->
+<!--                <methods>-->
+<!--                    <include name="TC001_verifyResetPasswordWithInvalidEmailId"/>-->
+<!--                </methods>-->
+<!--            </class>-->
+<!--            <class name="com.qalegendbilling.testscript.SignoutTest">-->
+<!--                <methods>-->
+<!--                    <include name="TC001_verifyUserSignOut"/>-->
+<!--                </methods>-->
+<!--            </class>-->
+<!--            <class name="com.qalegendbilling.testscript.UserManagementTest">-->
+<!--                <methods>-->
+<!--                    <include name="TC001_verifyTheUserManagementSubTabsAreDisplayed"/>-->
+<!--                </methods>-->
+<!--            </class>-->
+<!--            <class name="com.qalegendbilling.testscript.UsersTest">-->
+<!--                <methods>-->
+<!--                    <include name="TC001_verifyUsersPageTitle"/>-->
+<!--                    <include name="TC002_VerifyUserSearchWithValidData"/>-->
+<!--                    <include name="TC003_verifyMessageDisplayedByUserSearchWithInvalidData"/>-->
+<!--                    <include name="TC004_VerifyUserLoginWithNewlyAddedUser"/>-->
+<!--                </methods>-->
+<!--            </class>-->
+
+<!--            <class name="com.qalegendbilling.testscript.AddUserTest">-->
+<!--                <methods>-->
+<!--                    <include name="TC001_verifyAddUsersPageTitle"/>-->
+<!--                    <include name="TC002_verifyErrorMessageDisplayedWithoutFillingMandatoryFieldsInAddUserForm"/>-->
+<!--                </methods>-->
+<!--            </class>-->
+            <class name="com.qalegendbilling.testscript.UpdateUserTest">
                 <methods>
-                    <include name="TC001_verifyHomePageTitle"/>
-                    <include name="TC002_verifyDateDisplayed"/>
+                    <include name="TC001_verifyEditUserPageTitle"/>
                 </methods>
             </class>
-            <class name="com.qalegendbilling.testscript.LoginTest">
-                <methods>
-                    <include name="TC001_verifyLoginPageTitle"/>
-                    <include name="TC002_verifyUserLoginWithValidUserCredentials"/>
-                    <include name="TC003_verifyUserLoginWithInvalidUserCredentials"/>
-                    <include name="TC004_verifyUserAbleToClickOnRememberMeCheckBox"/>
-                </methods>
-            </class>
-            <class name="com.qalegendbilling.testscript.ResetTest">
-                <methods>
-                    <include name="TC001_verifyResetPasswordWithInvalidEmailId"/>
-                </methods>
-            </class>
-            <class name="com.qalegendbilling.testscript.SignoutTest">
-                <methods>
-                    <include name="TC001_verifyUserSignOut"/>
-                </methods>
-            </class>
-            <class name="com.qalegendbilling.testscript.UserManagementTest">
-                <methods>
-                    <include name="TC001_verifyTheUserManagementSubTabsAreDisplayed"/>
-                </methods>
-            </class>
-            <class name="com.qalegendbilling.testscript.UsersTest">
-                <methods>
-                    <include name="TC001_verifyUsersPageTitle"/>
-                </methods>
-            </class>
+
         </classes>
     </test>
 </suite>
