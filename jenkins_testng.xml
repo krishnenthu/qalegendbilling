@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
+<suite name="Functional Test Suite">
+    <listeners>
+        <listener class-name="com.qalegendbilling.listeners.TestListener"/>
+    </listeners>
+    <test name="Functional Test">
+        <parameter name="browser" value="chrome"/>
+        <classes>
+            <class name="com.qalegendbilling.testscript.LoginTest">
+                <methods>
+                    <include name="TC001_verifyLoginPageTitle"/>
+                    <include name="TC002_verifyUserLoginWithValidUserCredentials"/>
+                </methods>
+            </class>
+        </classes>
+    </test>
+</suite>

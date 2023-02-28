@@ -36,13 +36,13 @@
 <!--                    <include name="TC001_verifyTheUserManagementSubTabsAreDisplayed"/>-->
 <!--                </methods>-->
 <!--            </class>-->
-<!--            <class name="com.qalegendbilling.testscript.UsersTest">-->
-<!--                <methods>-->
-<!--                    <include name="TC001_verifyUsersPageTitle"/>-->
-<!--                    <include name="TC002_VerifyUserSearchWithValidData"/>-->
-<!--                    <include name="TC003_verifyMessageDisplayedByUserSearchWithInvalidData"/>-->
-<!--                    <include name="TC004_VerifyUserLoginWithNewlyAddedUser"/>-->
-<!--                </methods>-->
+            <class name="com.qalegendbilling.testscript.UsersTest">
+                <methods>
+                    <include name="TC001_verifyUsersPageTitle"/>
+                    <include name="TC002_VerifyUserSearchWithValidData"/>
+                    <include name="TC003_verifyMessageDisplayedByUserSearchWithInvalidData"/>
+                    <include name="TC004_VerifyUserLoginWithNewlyAddedUser"/>
+                </methods>
 <!--            </class>-->
 
 <!--            <class name="com.qalegendbilling.testscript.AddUserTest">-->
@@ -51,10 +51,10 @@
 <!--                    <include name="TC002_verifyErrorMessageDisplayedWithoutFillingMandatoryFieldsInAddUserForm"/>-->
 <!--                </methods>-->
 <!--            </class>-->
-            <class name="com.qalegendbilling.testscript.UpdateUserTest">
-                <methods>
-                    <include name="TC001_verifyEditUserPageTitle"/>
-                </methods>
+<!--            <class name="com.qalegendbilling.testscript.UpdateUserTest">-->
+<!--                <methods>-->
+<!--                    <include name="TC001_verifyEditUserPageTitle"/>-->
+<!--                </methods>-->
             </class>
 
         </classes>
