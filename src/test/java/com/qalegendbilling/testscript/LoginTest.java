@@ -28,6 +28,7 @@ public class LoginTest extends Base {
         String expLoginPageTitle = data.get(0).get(1);
         login = new LoginPage(driver);
         String actLoginPageTitle = login.getLoginPageTitle();
+        System.out.println("Test");
         extentTest.get().log(Status.PASS, ExtentLogMessage.LOGIN_TITLE_RECEIVED_MESSAGE);
         Assert.assertEquals(actLoginPageTitle, expLoginPageTitle, ErrorMessage.TITLE_FAILURE_MESSAGE);
         extentTest.get().log(Status.PASS,ExtentLogMessage.LOGIN_TITLE_VALIDATION_MESSAGE);
